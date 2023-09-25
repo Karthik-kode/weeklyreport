@@ -1,0 +1,21 @@
+.card {
+    width: 50%;
+    display: flex !important;
+    justify-content: center !important;
+    text-align: center;
+    margin: 10% 20%;
+    
+}
+
+.card-body {
+    display: flex ;
+    flex-direction: row ;
+    justify-content: space-between ;
+}
+
+
+.events {
+    display: flex !important;
+    flex-direction: row !important;
+    
+}
