@@ -11,12 +11,14 @@ import axios from "axios";
 
 
 export default function Reports() {
+
     const { state } = useLocation();
     const dashboardRef = useRef(null);
     const name = state && state.name;
     console.log("report name", name);
     const [data, setData] = useState({})
     const [members, setMembers] = useState({})
+   
 
     useEffect(() => {
         axios.get(`http://localhost:3001/reports/${name}`)
@@ -38,7 +40,10 @@ export default function Reports() {
         <>
             <div className="contains" ref={dashboardRef} id="dashboard">
                 <div className="header">
-                    <Header Data={data} Members={members}/>
+                    <Header 
+                    Data={data} 
+          
+                    />
                 </div>
                 <div className="grid">
                     <Activities_cur Data={data} />
