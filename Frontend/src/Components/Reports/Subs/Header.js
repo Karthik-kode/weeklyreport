@@ -4,7 +4,10 @@ import moment from 'moment'
 
 export default function Header(props) {
     const Data = props.Data
-    console.log(Data)
+    const Members = props.Members
+    console.log("header",Data)
+    console.log("members",Members)
+    console.log(Data,Members)
     console.log("headerdata",Data.startDate)
     console.log(typeof(Data.startDate))
     const startDate = new Date(Data.startDate)
@@ -27,7 +30,7 @@ export default function Header(props) {
                     </div>
                     <div className="card-div2">
                         <h6>Project Lead</h6>
-                        <h2>{Data.projectStatus}</h2>
+                        <h5>{Data.projectStatus}</h5>
                     </div>
 
                 </div>

@@ -4,18 +4,97 @@
     justify-content: center !important;
     text-align: center;
     margin: 10% 20%;
-    
+
 }
 
-.card-body {
-    display: flex ;
-    flex-direction: row ;
-    justify-content: space-between ;
-}
+/* .card-body {
+    /* display: flex; */
+    /* flex-direction: row; */
+    /* justify-content: space-between; } */
 
 
 .events {
     display: flex !important;
+    justify-content: space-around !important;
+
+}
+
+.role {
+    padding-right: 5%;
+    height: 6%;
+}
+
+.profile {
+    position: relative;
+    background-color: #007bff;
+    width: 15% !important;
+    height: 15% !important;
+    cursor: pointer;
+}
+
+.profile1 {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.modal {
+    /* position: absolute;
+    bottom: -40px; */
+    /* Adjust the position as needed */
+    /* left: 0;
+    width: 150px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    align-items: center; */
+
+
+    position: absolute;
+    top: 40%;
+    right: 20px;
+    /* Adjust the position to place it to the left of the card */
+    width: 200px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.modal-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    margin: 0px;
+    cursor: pointer;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 3%;
+}
+
+
+.dropdown {
+    height: 2rem !important;
+}
+
+.vitals {
+    width: 40%;
+    display: flex !important;
     flex-direction: row !important;
-    
+    justify-content: space-around !important;
+    align-items: center;
+}
+
+.status {
+    background-color: yellow;
+    border-radius: 3px;
 }

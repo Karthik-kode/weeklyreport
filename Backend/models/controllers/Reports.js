@@ -36,6 +36,7 @@ const createReport = async (req ,  res)  => {
 //Fetching Reports of respective project
 const fetchReport = async(req , res) => {
       const name = req.params.name
+      console.log("projectname", name)
       try{
         const projectDetails = await reports.findOne({ where: { projectName: name } });
         const projectMembers = await employee.findAll({where : {Project_allocated : name}});

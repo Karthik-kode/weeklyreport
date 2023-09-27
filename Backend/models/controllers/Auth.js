@@ -1,40 +1,64 @@
 const db = require('../entities')
 const employee = db.Employee
+const projects = db.Projects
 
 //Role based authentication
-const auth = async(req,res) =>{
+const auth = async (req, res) => {
     const name = req.body.username
-    try{
+    console.log("name", name)
+    const employeeProjects = [];
+    const otherProjects = [];
+    try {
         const user = await employee.findOne({
-            where : {
-                employeeName : name,
-                
+            where: {
+                employeeName: name,
+
 
             },
         })
-        console.log(user,"asfg")
+        console.log("after", user)
+        // if (user == null) {
+        //     console.log("ibnside cond")
+        //     return res.status(404).json({ message: 'user not found' });
+        // }
+        console.log(user, "asfg")
+        console.log("data", user)
+
 
         if (user) {
-            res.json(user.toJSON());
-            // return res.status(404).json({ message: 'user not found' });
-       }
-       else{
-        console.log("NULL DATA")
+            const projectsdata = await projects.findAll();
+            projectsdata.forEach(projects => {
+                if (projects.projectName == user.Project_allocated) {
+                    employeeProjects.push(projects.toJSON());
+                } else {
+                    otherProjects.push(projects.toJSON());
+                }
+            });
+            const projectname = user.Project_allocated;
+            console.log("pname", projectname)
+            console.log("Json", user.toJSON())
+            // res.json(user.toJSON());
+            // res.json({
+            //     user: user.toJSON(),
+            //     employeeProjects: employeeProjects,
+            //     otherProjects: otherProjects,
+            // });
+            res.send({data:[user.toJSON(),employeeProjects,otherProjects]})
+
+        }
+        else {
+            console.log("NULL DATA")
             // res.send("NULL user")
             return res.send('user not found');
-       }
-    //    else{
-    //         res.json(user);
-    //     }
-        console.log("data",user)
-        // return user ? user.toJSON() : null;
-        
+        }
+
+
     }
-    catch(err){
+    catch (err) {
         console.log(err)
     }
 }
 
-module.exports ={
+module.exports = {
     auth
 }

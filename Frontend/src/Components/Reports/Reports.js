@@ -17,20 +17,6 @@ export default function Reports() {
     console.log("report name", name);
     const [data, setData] = useState({})
     const [members, setMembers] = useState({})
-    const captureScreenshot = () => {
-        if (dashboardRef.current) {
-            html2canvas(dashboardRef.current).then((canvas) => {
-                const imgData = canvas.toDataURL('image/png');
-                const link = document.createElement('a');
-                link.href = imgData;
-                link.download = 'dashboard.png';
-                link.click();
-            });
-        }
-    };
-
-    //    const projectData = data.projectDetails;
-    //    const projectMembers = data.projectMembers;
 
     useEffect(() => {
         axios.get(`http://localhost:3001/reports/${name}`)
@@ -52,10 +38,8 @@ export default function Reports() {
         <>
             <div className="contains" ref={dashboardRef} id="dashboard">
                 <div className="header">
-                    <Header Data={data} />
+                    <Header Data={data} Members={members}/>
                 </div>
-
-
                 <div className="grid">
                     <Activities_cur Data={data} />
                     <Activities_past Data={data} />
@@ -65,12 +49,9 @@ export default function Reports() {
                     <Projectmembers Data={members} />
                 </div>
                 <div>
-                    <button id="downloadButton" className="button" onclick={() => captureScreenshot()}>Get Report</button>
+                    <button id="downloadButton" 
+                    className="button">Get Report</button>
                 </div>
-
-
-                {/* <Projectmembers Data={members}/> */}
-
             </div>
 
         </>
